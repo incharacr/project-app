@@ -3,7 +3,7 @@
   become: True 
   tasks:
     - name: install amazon-linux-extras
-    shell: yum -y install amazon-linux-extras
+      shell: yum -y install amazon-linux-extras
 
     - name: docker setup
       shell: amazon-linux-extras install docker -y
