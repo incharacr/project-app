@@ -40,7 +40,7 @@ pipeline{
             }
         }
         
-        stage('Email-notification'){
+        stage('Email-notifications'){
             steps{
                 emailext attachLog: true, body: 'this is the result ', subject: 'Regarding builds in project2', to: 'incharacr.ramesh@gmail.com'
             }
