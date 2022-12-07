@@ -19,7 +19,7 @@ pipeline{
          
         stage('Docker Build'){
             steps{
-                sh 'docker build -t incharacr/newapp:0.0.1 .'
+                sh 'docker build -t incharacr/new-app:0.0.1 .'
             }
         }
         
@@ -29,7 +29,7 @@ pipeline{
                 sh 'docker login -u incharacr -p ${dockerHubPwd}'
                 }
                 
-                sh 'docker push incharacr/newapp:0.0.1'
+                sh 'docker push incharacr/new-app:0.0.1'
             }
         }
         
