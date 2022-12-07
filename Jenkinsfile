@@ -5,7 +5,7 @@ pipeline{
     }
     
     stages{
-        stage('SCM checkout'){
+        stage('SCM Checkout'){
             steps{
                 git 'https://github.com/incharacr/addressbook.git'
             }
