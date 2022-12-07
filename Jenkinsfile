@@ -42,7 +42,7 @@ pipeline{
         
         stage('Email-notifications'){
             steps{
-                emailext attachLog: true, body: 'this is the result ', subject: 'Regarding builds in project2', to: 'incharacr.ramesh@gmail.com'
+                emailext attachLog: true, body: 'Email sent from Jenkins', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'incharacr.ramesh@gmail.com'
             }
         }
         
