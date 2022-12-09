@@ -2,12 +2,13 @@ pipeline{
     agent any
     tools {
         maven 'maven-3.8.6'
+	    terraform 'terraform-1.3'
     }
     
     stages{
         stage('SCM Checkout'){
             steps{
-                git 'https://github.com/incharacr/addressbook.git'
+                git ''
             }
         }
         
@@ -19,7 +20,7 @@ pipeline{
          
         stage('Docker Build'){
             steps{
-                sh 'docker build -t incharacr/new-app:0.0.1 .'
+                sh 'docker build -t incharacr/project-app:0.0.1 .'
             }
         }
         
@@ -29,22 +30,23 @@ pipeline{
                 sh 'docker login -u incharacr -p ${dockerHubPwd}'
                 }
                 
-                sh 'docker push incharacr/new-app:0.0.1'
+                sh 'docker push incharacr/project-app:0.0.1'
             }
         }
         
-        stage('Docker Deploy'){
+        stage('Terraform Init'){
             steps{
-                ansiblePlaybook credentialsId: 'dev-server', disableHostKeyChecking: true, installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
-            
+                sh 'terraform init'
             }
         }
         
-        stage('Email-notifications'){
+        stage('Terraform Apply'){
             steps{
-                emailext attachLog: true, body: 'Email sent from Jenkins', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'incharacr.ramesh@gmail.com'
+                sh 'terraform apply --auto-approve'
             }
         }
+        
+        
         
     }
 }
