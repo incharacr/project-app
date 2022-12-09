@@ -1,4 +1,4 @@
-resource "aws_instance" "MyInstance" {
+resource "aws_instance" "NewInstance" {
   ami           = "ami-0af2f764c580cc1f9"
   instance_type = "t2.micro"
   
