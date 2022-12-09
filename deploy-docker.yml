@@ -33,8 +33,8 @@
       
     - name: start the container
       docker_container:
-        name: new-app
-        image: "incharacr/new-app:0.0.1"
+        name: project-app
+        image: "incharacr/project-app:0.0.1"
         state: started
         published_ports:
           - 0.0.0.0:8080:8080
