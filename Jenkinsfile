@@ -4,7 +4,7 @@ pipeline{
     stages{
         stage('Git Checkout'){
             steps{
-                git ''
+                git 'https://github.com/incharacr/project-app.git'
             }
         }
 	
